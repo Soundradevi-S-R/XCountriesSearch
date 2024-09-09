@@ -3,11 +3,11 @@ import styles from  "./CountriesSearch.module.css";
 import { useEffect,useState } from "react";
 
 
-const countryCard =({flagImg,name}) =>{
+const Card =({flagImg,name}) =>{
 
    //console.log("print ", data);
     return (
-        <div className={styles.carddiv} >
+        <div className={styles.countryCard} >
             
             <img src={flagImg} alt={name} 
                                 style={{
@@ -26,8 +26,6 @@ function CountriesSearch(){
     const [countriesData,setCountriesData] = useState([]);
     const [filterData,setFilterData] = useState([]);
     const [searchVal, setSearchVal] = useState('');
-
-
 
     
     async function apiCall() {
@@ -68,7 +66,7 @@ function CountriesSearch(){
         <div className={styles.gridcontainer}>
             {
                 (filterData.length && 
-                filterData.map((country) =>  <countryCard key={country.name.common} flagImg={country.flags.png} name={country.name.common} />
+                filterData.map((country) =>  <Card key={country.name.common} flagImg={country.flags.png} name={country.name.common} />
                  ))
             }   
 
