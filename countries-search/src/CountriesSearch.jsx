@@ -3,7 +3,7 @@ import styles from  "./CountriesSearch.module.css";
 import { useEffect,useState } from "react";
 
 
-const CountryCard =({flagImg,name}) =>{
+const countryCard =({flagImg,name}) =>{
 
    //console.log("print ", data);
     return (
@@ -68,7 +68,7 @@ function CountriesSearch(){
         <div className={styles.gridcontainer}>
             {
                 (filterData.length && 
-                filterData.map((country) =>  <CountryCard key={country.name.common} flagImg={country.flags.png} name={country.name.common} />
+                filterData.map((country) =>  <countryCard key={country.name.common} flagImg={country.flags.png} name={country.name.common} />
                  ))
             }   
 
