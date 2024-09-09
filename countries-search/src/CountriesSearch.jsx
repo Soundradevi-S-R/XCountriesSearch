@@ -1,20 +1,21 @@
 import React from "react";
-import styles from  "./CountriesSearch.module.css";
+import  "./CountriesSearch.css";
+import "./"
 import { useEffect,useState } from "react";
 
 
-const Card =({flagImg,name}) =>{
+const Card =({flag}) =>{
 
    //console.log("print ", data);
     return (
-        <div className={styles.countryCard} >
+        <div className="countryCard" >
             
-            <img src={flagImg} alt={name} 
+            <img src={flag.flags.png} alt={flag.name.common} 
                                 style={{
                                     width:"100px",
                                     height:"100px",
                                     }}/>
-            <h2>{name}</h2>
+            <h2>{flag.name.common}</h2>
        </div>);
 };
 
@@ -48,25 +49,25 @@ function CountriesSearch(){
     const filterSearch=(e)=>{
         setSearchVal(e.target.value);
         let filtered = countriesData.filter((country) => 
-                                country.name.common.toLowerCase().includes(searchVal.toLocaleLowerCase()) );
+                                country.name.common.toLowerCase().includes(e.target.value.toLocaleLowerCase()) );
         setFilterData(filtered);    
 
     };
 
     return(
     <div>
-        <div className={styles.searchDiv}>
+        <div className="searchDiv">
             <input 
                  type='text'
                  placeholder="Search for Countries" 
-                 className={styles.search}
+                 className="search"
                  value={searchVal}
                  onChange={filterSearch}  />
         </div>   
-        <div className={styles.gridcontainer}>
+        <div className="gridcontainer">
             {
                 (filterData.length && 
-                filterData.map((country) =>  <Card key={country.name.common} flagImg={country.flags.png} name={country.name.common} />
+                filterData.map((country) =>  <Card key={country.name.common} flag={country}  />
                  ))
             }   
 
